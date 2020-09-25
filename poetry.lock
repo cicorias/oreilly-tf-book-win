@@ -20,7 +20,7 @@ version = "1.4.3"
 [[package]]
 category = "main"
 description = "Disable App Nap on OS X 10.9"
-marker = "python_version >= \"3.3\" and sys_platform == \"darwin\" or platform_system == \"Darwin\""
+marker = "sys_platform == \"darwin\" or platform_system == \"Darwin\" or python_version >= \"3.3\" and sys_platform == \"darwin\""
 name = "appnope"
 optional = false
 python-versions = "*"
@@ -63,7 +63,6 @@ tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.i
 [[package]]
 category = "main"
 description = "Specifications for callback functions passed in to an API"
-marker = "python_version >= \"3.3\""
 name = "backcall"
 optional = false
 python-versions = "*"
@@ -460,7 +459,6 @@ test = ["pytest (>=3.6.0)", "pytest-cov", "mock"]
 [[package]]
 category = "main"
 description = "An autocompletion tool for Python that can be used for text editors."
-marker = "python_version >= \"3.3\""
 name = "jedi"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
@@ -668,19 +666,6 @@ name = "mistune"
 optional = false
 python-versions = "*"
 version = "0.8.4"
-
-[[package]]
-category = "main"
-description = "Rolling backport of unittest.mock for all Pythons"
-name = "mock"
-optional = false
-python-versions = ">=3.6"
-version = "4.0.2"
-
-[package.extras]
-build = ["twine", "wheel", "blurb"]
-docs = ["sphinx"]
-test = ["pytest", "pytest-cov"]
 
 [[package]]
 category = "main"
@@ -903,7 +888,7 @@ testing = ["docopt", "pytest (>=3.0.7)"]
 [[package]]
 category = "main"
 description = "Pexpect allows easy control of interactive console applications."
-marker = "python_version >= \"3.3\" and sys_platform != \"win32\""
+marker = "python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\""
 name = "pexpect"
 optional = false
 python-versions = "*"
@@ -915,7 +900,6 @@ ptyprocess = ">=0.5"
 [[package]]
 category = "main"
 description = "Tiny 'shelve'-like database with concurrency support"
-marker = "python_version >= \"3.3\""
 name = "pickleshare"
 optional = false
 python-versions = "*"
@@ -1274,18 +1258,6 @@ version = ">=0.26"
 
 [[package]]
 category = "main"
-description = "TensorFlow Addons."
-name = "tensorflow-addons"
-optional = false
-python-versions = "*"
-version = "0.6.0"
-
-[package.dependencies]
-six = ">=1.10.0"
-tensorflow-gpu = "2.0.0"
-
-[[package]]
-category = "main"
 description = "tensorflow/datasets is a library of datasets ready to use with TensorFlow."
 name = "tensorflow-datasets"
 optional = false
@@ -1347,27 +1319,28 @@ description = "TensorFlow is an open source machine learning framework for every
 name = "tensorflow-gpu"
 optional = false
 python-versions = "*"
-version = "2.0.0"
+version = "2.0.3"
 
 [package.dependencies]
 absl-py = ">=0.7.0"
 astor = ">=0.6.0"
-functools32 = ">=3.2.3"
 gast = "0.2.2"
 google-pasta = ">=0.1.6"
 grpcio = ">=1.8.6"
 keras-applications = ">=1.0.8"
 keras-preprocessing = ">=1.0.5"
-mock = ">=2.0.0"
-numpy = ">=1.16.0,<2.0"
+numpy = ">=1.16.0,<1.19.0"
 opt-einsum = ">=2.3.2"
 protobuf = ">=3.6.1"
 six = ">=1.10.0"
 tensorboard = ">=2.0.0,<2.1.0"
 tensorflow-estimator = ">=2.0.0,<2.1.0"
 termcolor = ">=1.1.0"
-wheel = "*"
 wrapt = ">=1.11.1"
+
+[package.dependencies.wheel]
+python = ">=3"
+version = ">=0.26"
 
 [[package]]
 category = "main"
@@ -1574,6 +1547,7 @@ watchdog = ["watchdog"]
 [[package]]
 category = "main"
 description = "A built-package format for Python"
+marker = "python_version >= \"3\""
 name = "wheel"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
@@ -1627,7 +1601,8 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "994c0eeb6bb7a874410cd1987b8e07498154df2a1268e86e6fefa65f833562a7"
+content-hash = "5dbec2bb5be5d9df3d552ccb98fd6aeaf1825fed657f3e681ba6cb5ced3d14c3"
+lock-version = "1.0"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1995,10 +1970,6 @@ matplotlib = [
 mistune = [
     {file = "mistune-0.8.4-py2.py3-none-any.whl", hash = "sha256:88a1051873018da288eee8538d476dffe1262495144b33ecb586c4ab266bb8d4"},
     {file = "mistune-0.8.4.tar.gz", hash = "sha256:59a3429db53c50b5c6bcc8a07f8848cb00d7dc8bdb431a4ab41920d201d4756e"},
-]
-mock = [
-    {file = "mock-4.0.2-py3-none-any.whl", hash = "sha256:3f9b2c0196c60d21838f307f5825a7b86b678cedc58ab9e50a8988187b4d81e0"},
-    {file = "mock-4.0.2.tar.gz", hash = "sha256:dd33eb70232b6118298d516bbcecd26704689c386594f0f3c4f13867b2c56f72"},
 ]
 nbconvert = [
     {file = "nbconvert-5.6.1-py2.py3-none-any.whl", hash = "sha256:f0d6ec03875f96df45aa13e21fd9b8450c42d7e1830418cccc008c0df725fcee"},
@@ -2437,16 +2408,6 @@ tensorflow = [
     {file = "tensorflow-2.0.1-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:04a3e889ade6be191c4a39933d7dd13a141a4c31cacbc4b23e06e80343bb9151"},
     {file = "tensorflow-2.0.1-cp37-cp37m-win_amd64.whl", hash = "sha256:b8eb1486a3be60708add1b733983444c0b47e90d0087021199e51e30f6c4e0d0"},
 ]
-tensorflow-addons = [
-    {file = "tensorflow_addons-0.6.0-cp27-cp27m-macosx_10_13_x86_64.whl", hash = "sha256:4101475d6d87e70ac83ee90e908d8d2f08ff28842eeffa7c0bbe411d2ffea738"},
-    {file = "tensorflow_addons-0.6.0-cp27-cp27mu-manylinux2010_x86_64.whl", hash = "sha256:9c8833134bf2e422c41be2f50808b38eb2d6a6d7244ca75267be8f1929f5b7e8"},
-    {file = "tensorflow_addons-0.6.0-cp35-cp35m-macosx_10_13_x86_64.whl", hash = "sha256:48478c030cb2d4a3568fcbf4e620c2060a98c617a64fef43f255b0663deaa517"},
-    {file = "tensorflow_addons-0.6.0-cp35-cp35m-manylinux2010_x86_64.whl", hash = "sha256:065ae16650e33e71f638ca2eb88f8020d80c32dddbf5e0d33a31a11e81609744"},
-    {file = "tensorflow_addons-0.6.0-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:f23bbccb7c13fddb892d07fad352746e931f7223ff2bf44e71975af8912d62e5"},
-    {file = "tensorflow_addons-0.6.0-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:f7f89a1eb0b989e28c7f6e5e52360495d4826ca43ff1dde5dd00ff3fc444d63a"},
-    {file = "tensorflow_addons-0.6.0-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:94972f70393faa1d390da3e8e1f386e2ce7186f9a9bdfb743dedb53b2aa38f39"},
-    {file = "tensorflow_addons-0.6.0-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:750f795126fdeca501fc1865a662186f33c9b61fe1d289f7b798e9bc15cbae78"},
-]
 tensorflow-datasets = [
     {file = "tensorflow-datasets-1.3.0.tar.gz", hash = "sha256:3da829313f7abc9e6d809661a59d1ab015cfa623b362d96166ac211838f1c077"},
     {file = "tensorflow_datasets-1.3.0-py2-none-any.whl", hash = "sha256:664eaf7147fde9bdf464f4e68cffc903e9f6f41931950dc77b76c0221e4855e3"},
@@ -2456,13 +2417,12 @@ tensorflow-estimator = [
     {file = "tensorflow_estimator-2.0.1-py2.py3-none-any.whl", hash = "sha256:aa8deab25d09a9730dfbae8ec58f4eb00ec2a90b5ca3dcbd8fa0717103d3bbb3"},
 ]
 tensorflow-gpu = [
-    {file = "tensorflow_gpu-2.0.0-cp27-cp27mu-manylinux2010_x86_64.whl", hash = "sha256:767d775cb7b0f997b584a7441f47d76ff216cf05eb902fc56d9d3f664b03412a"},
-    {file = "tensorflow_gpu-2.0.0-cp35-cp35m-manylinux2010_x86_64.whl", hash = "sha256:bd6ad275b05132910b9d929cf299895c1b92cd66a01271c8e33818454d88888c"},
-    {file = "tensorflow_gpu-2.0.0-cp35-cp35m-win_amd64.whl", hash = "sha256:73943249a1059ea8344487756939539bd32d2639f1fc0f92d6395863764b683b"},
-    {file = "tensorflow_gpu-2.0.0-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:a87701141f8836205e20ba061246bc3a14e73f07f061a91325ca297c641995d0"},
-    {file = "tensorflow_gpu-2.0.0-cp36-cp36m-win_amd64.whl", hash = "sha256:6bb259ceadac6f9ccba7c07903570e4b495d6230efce8f4ab8831cede87cea42"},
-    {file = "tensorflow_gpu-2.0.0-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:a79fcb04092afa2737a45ff81cfc74f4423d239bfe642159eb34c90233900157"},
-    {file = "tensorflow_gpu-2.0.0-cp37-cp37m-win_amd64.whl", hash = "sha256:ccaae56548ab8a8148c1735ca176d2b2da103dc4cd8603fe86692b0b3c7530fb"},
+    {file = "tensorflow_gpu-2.0.3-cp35-cp35m-manylinux2010_x86_64.whl", hash = "sha256:1dbfb24cebfacf4c67ad9a64ee494079a0355448f0ad692864fc59321c81789f"},
+    {file = "tensorflow_gpu-2.0.3-cp35-cp35m-win_amd64.whl", hash = "sha256:63f43e3123fcab4a000a157ce7d05c7279802c5ceab9f1181d946e667760a180"},
+    {file = "tensorflow_gpu-2.0.3-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:b34273a4033f3554809f209c6d6a406a55cb272739d55d2e4dcb219295718b27"},
+    {file = "tensorflow_gpu-2.0.3-cp36-cp36m-win_amd64.whl", hash = "sha256:66976eb4f1e829b32b7441f2bf44e28c7e543d81ca65c494f1aaa8291302f91a"},
+    {file = "tensorflow_gpu-2.0.3-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:7aa73a41a6d4142ff547892cc17ad2c680a991342bf547217df6f1ef34642d5a"},
+    {file = "tensorflow_gpu-2.0.3-cp37-cp37m-win_amd64.whl", hash = "sha256:8c239a34b0e9d48a7237405995819754be19931e6c050cd0351c53543b22b683"},
 ]
 tensorflow-hub = [
     {file = "tensorflow_hub-0.6.0-py2.py3-none-any.whl", hash = "sha256:cdcc886c8c834bb97e8fd5927ef0cdf9a26a15b51618be11fa0f412def154719"},
