@@ -10,7 +10,7 @@ graphviz = "*"
 gym = {version = "==0.15.4", extras = ["atari"]}
 imageio = "==2.6.1"
 ipywidgets = "==7.5.1"
-joblib = "==0.14.0"
+joblib = "==1.2.0"
 jupyter = "==1.0.0"
 matplotlib = "==3.1.2"
 nbdime = "==1.1.0"
